@@ -12,6 +12,14 @@ provider "aws" {
   region  = "eu-central-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "nrr.tfstate.bucket"
+    key    = "task6/terraform.tfstate"
+    region = "eu-central-1"
+    profile = "second"
+  }
+}
 
 module "ec2_module" {
   source = "../modules/aws/ec2"
